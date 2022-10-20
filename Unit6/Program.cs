@@ -22,14 +22,12 @@ namespace Unit6
     //тип двигателя в автомобиле (электрический и бензиновый). Для типов двигателей также создайте классы —
     //ElectricEngine и GasEngine.
     //В классе Car создайте поле Engine в качестве типа которому укажите универсальный параметр.
-    class Car<TEngine> where TEngine: Engine       
+    abstract class Car<TEngine> where TEngine: Engine       
     {
         public TEngine EngineType;
-        
-        public virtual void ChangePart<TPart>(TPart newPart) where TPart: PartType 
-        {
 
-        }
+        public abstract void ChangePart<TPart>(TPart newPart) where TPart : PartType;
+        
     }
 
     class ElectricEngine: Engine
@@ -59,6 +57,20 @@ namespace Unit6
     class PartType
     {
 
+    }
+    class ElectricCar:Car<ElectricEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    class GasCar:Car<GasEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     //7.6.6
